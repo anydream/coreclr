@@ -31,8 +31,8 @@
     <WarningsNotAsErrors>$(WarningsNotAsErrors);618</WarningsNotAsErrors>
     <NoWarn>649,3019,414,169,3015</NoWarn>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
     <DefineConstants>$(DefineConstants);CORECLR;_USE_NLS_PLUS_TABLE;RESOURCE_SATELLITE_CONFIG;CODE_ANALYSIS_BASELINE</DefineConstants>
     <!-- We don't use any of MSBuild's resolution logic for resolving the framework, so just set these two properties to any folder that exists to skip
          the GenerateReferenceAssemblyPaths task (not target) and to prevent it from outputting a warning (MSB3644). -->
@@ -92,7 +92,7 @@
   </PropertyGroup>
   <!-- Assembly attributes -->
   <PropertyGroup>
-    <AssemblyName>System.Private.CoreLib</AssemblyName>
+    <AssemblyName>mscorlib</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
     <MajorVersion>4</MajorVersion>
     <MinorVersion>6</MinorVersion>
@@ -624,7 +624,6 @@
     <PropertyGroup>
       <CMakeDefinitionSaveFile>$(IntermediateOutputPath)\cmake.definitions</CMakeDefinitionSaveFile>
     </PropertyGroup>
-    <Exec Command="python $(MSBuildThisFileDirectory)..\scripts\check-definitions.py &quot;$(CMakeDefinitionSaveFile)&quot; &quot;$(DefineConstants)&quot; &quot;$(IgnoreDefineConstants)&quot; " />
   </Target>
   <PropertyGroup Condition="'$(BuildOS)' == 'Windows_NT'">
     <EnableDotnetAnalyzers Condition="'$(EnableDotnetAnalyzers)'==''">true</EnableDotnetAnalyzers>
@@ -642,7 +641,6 @@
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), dir.targets))\dir.targets" />
   <PropertyGroup>
     <!-- Overwrite the key that we are going to use for signing -->
-    <AssemblyOriginatorKeyFile>$(ToolsDir)SilverlightPlatformPublicKey.snk</AssemblyOriginatorKeyFile>
     <!-- Don't need a strong name signature because we only ship the native image -->
     <StrongNameSig>None</StrongNameSig>
     <!-- Use a different nativeresource file to avoid conflicts with mscorlib-->
