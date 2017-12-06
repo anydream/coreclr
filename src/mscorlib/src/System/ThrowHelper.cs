@@ -350,6 +350,8 @@ namespace System
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static string GetArgumentName(ExceptionArgument argument)
         {
+            return "argument";
+
             Debug.Assert(Enum.IsDefined(typeof(ExceptionArgument), argument),
                 "The enum value is not defined, please check the ExceptionArgument Enum.");
 
@@ -360,6 +362,8 @@ namespace System
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static string GetResourceString(ExceptionResource resource)
         {
+            return "resource";
+
             Debug.Assert(Enum.IsDefined(typeof(ExceptionResource), resource),
                 "The enum value is not defined, please check the ExceptionResource Enum.");
 

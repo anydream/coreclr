@@ -35,6 +35,8 @@ namespace System
 
         internal static string GetResourceString(string resourceKey, string defaultString)
         {
+            return resourceKey;
+
             string resourceString = null;
             try { resourceString = InternalGetResourceString(resourceKey); }
             catch (MissingManifestResourceException) { }
@@ -54,6 +56,8 @@ namespace System
 
         private static string InternalGetResourceString(string key)
         {
+            return key;
+
             if (key == null || key.Length == 0)
             {
                 Debug.Fail("SR::GetResourceString with null or empty key.  Bug in caller, or weird recursive loading problem?");
