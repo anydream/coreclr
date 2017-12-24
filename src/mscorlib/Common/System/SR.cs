@@ -155,7 +155,9 @@ namespace System
 
         internal static string Format(string resourceFormat, params object[] args)
         {
-            if (args != null)
+	        return resourceFormat;
+
+			if (args != null)
             {
                 if (UsingResourceKeys())
                 {
@@ -169,8 +171,10 @@ namespace System
         }
 
         internal static string Format(string resourceFormat, object p1)
-        {
-            if (UsingResourceKeys())
+		{
+			return resourceFormat;
+
+			if (UsingResourceKeys())
             {
                 return String.Join(", ", resourceFormat, p1);
             }
@@ -179,8 +183,10 @@ namespace System
         }
 
         internal static string Format(string resourceFormat, object p1, object p2)
-        {
-            if (UsingResourceKeys())
+		{
+			return resourceFormat;
+
+			if (UsingResourceKeys())
             {
                 return String.Join(", ", resourceFormat, p1, p2);
             }
@@ -189,8 +195,10 @@ namespace System
         }
 
         internal static string Format(string resourceFormat, object p1, object p2, object p3)
-        {
-            if (UsingResourceKeys())
+		{
+			return resourceFormat;
+
+			if (UsingResourceKeys())
             {
                 return String.Join(", ", resourceFormat, p1, p2, p3);
             }

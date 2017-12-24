@@ -21,9 +21,10 @@ namespace System.Collections.Generic
     {
         // To minimize generic instantiation overhead of creating the comparer per type, we keep the generic portion of the code as small
         // as possible and define most of the creation logic in a non-generic class.
-        public static EqualityComparer<T> Default { [Intrinsic] get; } = (EqualityComparer<T>)ComparerHelpers.CreateDefaultEqualityComparer(typeof(T));
+        public static EqualityComparer<T> Default { [Intrinsic] get; } = //(EqualityComparer<T>)ComparerHelpers.CreateDefaultEqualityComparer(typeof(T));
+	        new ObjectEqualityComparer<T>();
 
-        public abstract bool Equals(T x, T y);
+		public abstract bool Equals(T x, T y);
         public abstract int GetHashCode(T obj);
 
         internal virtual int IndexOf(T[] array, T value, int startIndex, int count)
@@ -262,11 +263,11 @@ namespace System.Collections.Generic
         }
 
         // Equals method for the comparer itself.
-        public override bool Equals(object obj) =>
-            obj != null && GetType() == obj.GetType();
+	    public override bool Equals(object obj) => obj is ObjectEqualityComparer<T>;
+			//obj != null && GetType() == obj.GetType();
 
-        public override int GetHashCode() =>
-            GetType().GetHashCode();
+	    public override int GetHashCode() => 0;
+	    //GetType().GetHashCode();
     }
 
     // Performance of IndexOf on byte array is very important for some scenarios.

@@ -74,10 +74,10 @@ namespace System.Collections.Generic
             if (capacity > 0) Initialize(capacity);
             _comparer = comparer ?? EqualityComparer<TKey>.Default;
 
-            if (_comparer == EqualityComparer<string>.Default)
+            /*if (_comparer == EqualityComparer<string>.Default)
             {
                 _comparer = (IEqualityComparer<TKey>)NonRandomizedStringEqualityComparer.Default;
-            }
+            }*/
         }
 
         public Dictionary(IDictionary<TKey, TValue> dictionary) : this(dictionary, null) { }
@@ -448,11 +448,11 @@ namespace System.Collections.Generic
             // If we hit the collision threshold we'll need to switch to the comparer which is using randomized string hashing
             // i.e. EqualityComparer<string>.Default.
 
-            if (collisionCount > HashHelpers.HashCollisionThreshold && _comparer is NonRandomizedStringEqualityComparer)
+            /*if (collisionCount > HashHelpers.HashCollisionThreshold && _comparer is NonRandomizedStringEqualityComparer)
             {
                 _comparer = (IEqualityComparer<TKey>)EqualityComparer<string>.Default;
                 Resize(_entries.Length, true);
-            }
+            }*/
 
             return true;
         }
