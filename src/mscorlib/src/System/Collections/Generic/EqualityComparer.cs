@@ -263,11 +263,11 @@ namespace System.Collections.Generic
         }
 
         // Equals method for the comparer itself.
-	    public override bool Equals(object obj) => obj is ObjectEqualityComparer<T>;
-			//obj != null && GetType() == obj.GetType();
+	    public override bool Equals(object obj) =>
+		    obj != null && GetInternalTypeID() == obj.GetInternalTypeID();
 
-	    public override int GetHashCode() => 0;
-	    //GetType().GetHashCode();
+		public override int GetHashCode() =>
+			GetInternalTypeID();
     }
 
     // Performance of IndexOf on byte array is very important for some scenarios.

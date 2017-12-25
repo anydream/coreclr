@@ -100,9 +100,13 @@ namespace System
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern Type GetType();
 
-        // Allow an object to free resources before the object is reclaimed by the GC.
-        // 
-        [System.Runtime.Versioning.NonVersionable]
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		internal extern int GetInternalTypeID();
+
+		// Allow an object to free resources before the object is reclaimed by the GC.
+		// 
+		[System.Runtime.Versioning.NonVersionable]
         ~Object()
         {
         }
