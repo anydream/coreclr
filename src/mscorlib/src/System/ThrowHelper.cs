@@ -52,7 +52,7 @@ namespace System
 
         internal static void ThrowInvalidTypeWithPointersNotSupported(Type targetType)
         {
-            throw new ArgumentException(SR.Format(SR.Argument_InvalidTypeWithPointersNotSupported, targetType));
+            throw new ArgumentException(); //SR.Format(SR.Argument_InvalidTypeWithPointersNotSupported, targetType));
         }
 
         internal static void ThrowIndexOutOfRangeException()
@@ -114,8 +114,8 @@ namespace System
 
         private static ArgumentException GetAddingDuplicateWithKeyArgumentException(object key)
         {
-            return new ArgumentException(SR.Format(SR.Argument_AddingDuplicateWithKey, key));
-        }
+            return new ArgumentException(); //SR.Format(SR.Argument_AddingDuplicateWithKey, key));
+		}
 
         internal static void ThrowAddingDuplicateWithKeyArgumentException<T>(T key)
         {
@@ -299,18 +299,18 @@ namespace System
 
         private static ArgumentException GetWrongKeyTypeArgumentException(object key, Type targetType)
         {
-            return new ArgumentException(SR.Format(SR.Arg_WrongType, key, targetType), nameof(key));
-        }
+            return new ArgumentException(); //SR.Format(SR.Arg_WrongType, key, targetType), nameof(key));
+		}
 
         private static ArgumentException GetWrongValueTypeArgumentException(object value, Type targetType)
         {
-            return new ArgumentException(SR.Format(SR.Arg_WrongType, value, targetType), nameof(value));
-        }
+            return new ArgumentException(); //SR.Format(SR.Arg_WrongType, value, targetType), nameof(value));
+		}
 
         private static KeyNotFoundException GetKeyNotFoundException(object key)
         {
-            return new KeyNotFoundException(SR.Format(SR.Arg_KeyNotFoundWithKey, key.ToString()));
-        }
+            return new KeyNotFoundException(); //SR.Format(SR.Arg_KeyNotFoundWithKey, key.ToString()));
+		}
 
         internal static ArgumentOutOfRangeException GetArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
         {

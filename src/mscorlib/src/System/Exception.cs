@@ -398,6 +398,8 @@ namespace System
 
         private String ToString(bool needFileLineInfo, bool needMessage)
         {
+            return "Exception";
+
             String message = (needMessage ? Message : null);
             String s;
 
