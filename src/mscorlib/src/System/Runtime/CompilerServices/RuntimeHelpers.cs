@@ -178,6 +178,9 @@ namespace System.Runtime.CompilerServices
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		public static extern bool FastCompareBits<T>(ref T lhs, ref T rhs);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		public static extern int GetInternalTypeID<T>();
 	}
 }
 
