@@ -172,6 +172,12 @@ namespace System.Runtime.CompilerServices
         /// <returns>true if given type is reference type or value type that contains references</returns>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern bool IsReferenceOrContainsReferences<T>();
-    }
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		public static extern bool CanCompareBits<T>();
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		public static extern bool FastCompareBits<T>(ref T lhs, ref T rhs);
+	}
 }
 
