@@ -47,7 +47,7 @@ namespace System
         {
             if (array == null)
                 ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
-            if (default(T) == null && array.GetType() != typeof(T[]))
+            if (default(T) == null && array.GetInternalTypeID() != RuntimeHelpers.GetInternalTypeID<T[]>())
                 ThrowHelper.ThrowArrayTypeMismatchException();
 
             _pointer = new ByReference<T>(ref Unsafe.As<byte, T>(ref array.GetRawSzArrayData()));
@@ -72,7 +72,7 @@ namespace System
         {
             if (array == null)
                 ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
-            if (default(T) == null && array.GetType() != typeof(T[]))
+            if (default(T) == null && array.GetInternalTypeID() != RuntimeHelpers.GetInternalTypeID<T[]>())
                 ThrowHelper.ThrowArrayTypeMismatchException();
             if ((uint)start > (uint)array.Length || (uint)length > (uint)(array.Length - start))
                 ThrowHelper.ThrowArgumentOutOfRangeException();
@@ -100,7 +100,7 @@ namespace System
         public unsafe Span(void* pointer, int length)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                ThrowHelper.ThrowInvalidTypeWithPointersNotSupported(typeof(T));
+                ThrowHelper.ThrowInvalidTypeWithPointersNotSupported(null/*typeof(T)*/);
             if (length < 0)
                 ThrowHelper.ThrowArgumentOutOfRangeException();
 

@@ -28,6 +28,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace System.Globalization
@@ -244,7 +245,7 @@ namespace System.Globalization
                     _cultureData = CultureData.GetCultureData(culture, useUserOverride);
                     break;
             }
-            _isInherited = (this.GetType() != typeof(System.Globalization.CultureInfo));
+            _isInherited = (this.GetInternalTypeID() != RuntimeHelpers.GetInternalTypeID<System.Globalization.CultureInfo>());
             _name = _cultureData.CultureName;
         }
 
@@ -259,7 +260,7 @@ namespace System.Globalization
             }
 
             _name = _cultureData.CultureName;
-            _isInherited = (this.GetType() != typeof(System.Globalization.CultureInfo));
+            _isInherited = (this.GetInternalTypeID() != RuntimeHelpers.GetInternalTypeID<System.Globalization.CultureInfo>());
         }
 
         // Constructor called by SQL Server's special munged culture - creates a culture with
