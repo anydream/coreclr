@@ -147,26 +147,29 @@ namespace System.Runtime.CompilerServices
         }
 #else // DEBUG
 
-        static internal int UnsafeEnumCast<T>(T val) where T : struct		// Actually T must be 4 byte (or less) enum
-        {
+	    [MethodImpl(MethodImplOptions.InternalCall)]
+	    extern static internal int UnsafeEnumCast<T>(T val) where T : struct;		// Actually T must be 4 byte (or less) enum
+        /*{
             // should be return (int) val; but C# does not allow, runtime does this magically
             // See getILIntrinsicImplementation for how this happens.  
             throw new InvalidOperationException();
-        }
+        }*/
 
-        static internal long UnsafeEnumCastLong<T>(T val) where T : struct	// Actually T must be 8 byte enum
-        {
+	    [MethodImpl(MethodImplOptions.InternalCall)]
+	    extern static internal long UnsafeEnumCastLong<T>(T val) where T : struct;	// Actually T must be 8 byte enum
+        /*{
             // should be return (long) val; but C# does not allow, runtime does this magically
             // See getILIntrinsicImplementation for how this happens.  
             throw new InvalidOperationException();
-        }
+        }*/
 
-        static internal IntPtr UnsafeCastToStackPointer<T>(ref T val)
-        {
+	    [MethodImpl(MethodImplOptions.InternalCall)]
+	    extern static internal IntPtr UnsafeCastToStackPointer<T>(ref T val);
+        /*{
             // The body of this function will be replaced by the EE with unsafe code that just returns o!!!
             // See getILIntrinsicImplementation for how this happens.  
             throw new InvalidOperationException();
-        }
+        }*/
 #endif // DEBUG
 
         // Set the given element in the array without any type or range checks
@@ -184,12 +187,13 @@ namespace System.Runtime.CompilerServices
         private extern static bool IsAddressInStack(IntPtr ptr);
 #endif
 
-        static internal ref byte GetRawSzArrayData(this Array array)
-        {
-            // The body of this function will be replaced by the EE with unsafe code!!!
-            // See getILIntrinsicImplementation for how this happens.
-            typeof(ArrayPinningHelper).ToString(); // Type used by the actual method body
-            throw new InvalidOperationException();
-        }
+	    [MethodImpl(MethodImplOptions.InternalCall)]
+	    extern static internal ref byte GetRawSzArrayData(this Array array);
+	    /*{
+	        // The body of this function will be replaced by the EE with unsafe code!!!
+	        // See getILIntrinsicImplementation for how this happens.
+	        typeof(ArrayPinningHelper).ToString(); // Type used by the actual method body
+	        throw new InvalidOperationException();
+	    }*/
     }
 }
