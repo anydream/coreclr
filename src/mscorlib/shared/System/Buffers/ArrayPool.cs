@@ -2,6 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Runtime.CompilerServices;
+
 namespace System.Buffers
 {
     /// <summary>
@@ -34,8 +36,10 @@ namespace System.Buffers
         /// The shared pool instance is created lazily on first access.
         /// </remarks>
         public static ArrayPool<T> Shared { get; } =
-            typeof(T) == typeof(byte) || typeof(T) == typeof(char) ? new TlsOverPerCoreLockedStacksArrayPool<T>() :
-            Create();
+            RuntimeHelpers.GetInternalTypeID<T>() == RuntimeHelpers.GetInternalTypeID<byte>() || 
+			RuntimeHelpers.GetInternalTypeID<T>() == RuntimeHelpers.GetInternalTypeID<char>() ?
+				new TlsOverPerCoreLockedStacksArrayPool<T>() :
+				Create();
 
         /// <summary>
         /// Creates a new <see cref="ArrayPool{T}"/> instance using default configuration options.
