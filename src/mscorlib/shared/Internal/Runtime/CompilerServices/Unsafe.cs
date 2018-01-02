@@ -33,29 +33,29 @@ namespace Internal.Runtime.CompilerServices
     [CLSCompliant(false)]
     public static unsafe class Unsafe
     {
-        /// <summary>
-        /// Returns a pointer to the given by-ref parameter.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void* AsPointer<T>(ref T value)
-        {
+		/// <summary>
+		/// Returns a pointer to the given by-ref parameter.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern void* AsPointer<T>(ref T value);
+        /*{
             throw new PlatformNotSupportedException();
 
             // ldarg.0
             // conv.u
             // ret
-        }
+        }*/
 
-        /// <summary>
-        /// Returns the size of an object of the given type parameter.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SizeOf<T>()
-        {
+		/// <summary>
+		/// Returns the size of an object of the given type parameter.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern int SizeOf<T>();
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
 #endif
@@ -63,83 +63,83 @@ namespace Internal.Runtime.CompilerServices
 
             // sizeof !!0
             // ret
-        }
+        }*/
 
-        /// <summary>
-        /// Casts the given object to the specified type, performs no dynamic type checking.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T As<T>(object value) where T : class
-        {
+		/// <summary>
+		/// Casts the given object to the specified type, performs no dynamic type checking.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern T As<T>(object value) where T : class;
+        /*{
             throw new PlatformNotSupportedException();
 
             // ldarg.0
             // ret
-        }
+        }*/
 
-        /// <summary>
-        /// Reinterprets the given reference as a reference to a value of type <typeparamref name="TTo"/>.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref TTo As<TFrom, TTo>(ref TFrom source)
-        {
+		/// <summary>
+		/// Reinterprets the given reference as a reference to a value of type <typeparamref name="TTo"/>.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern ref TTo As<TFrom, TTo>(ref TFrom source);
+        /*{
             throw new PlatformNotSupportedException();
 
             // ldarg.0
             // ret
-        }
+        }*/
 
-        /// <summary>
-        /// Adds an element offset to the given reference.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref T Add<T>(ref T source, int elementOffset)
-        {
+		/// <summary>
+		/// Adds an element offset to the given reference.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern ref T Add<T>(ref T source, int elementOffset);
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
             throw new PlatformNotSupportedException();
 #else
             return ref AddByteOffset(ref source, (IntPtr)(elementOffset * (nint)SizeOf<T>()));
 #endif
-        }
+        }*/
 
-        /// <summary>
-        /// Adds an element offset to the given reference.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref T Add<T>(ref T source, IntPtr elementOffset)
-        {
+		/// <summary>
+		/// Adds an element offset to the given reference.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern ref T Add<T>(ref T source, IntPtr elementOffset);
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
             throw new PlatformNotSupportedException();
 #else
             return ref AddByteOffset(ref source, (IntPtr)((nint)elementOffset * (nint)SizeOf<T>()));
 #endif
-        }
+        }*/
 
-        /// <summary>
-        /// Adds an element offset to the given pointer.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void* Add<T>(void* source, int elementOffset)
-        {
+		/// <summary>
+		/// Adds an element offset to the given pointer.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern void* Add<T>(void* source, int elementOffset);
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
             throw new PlatformNotSupportedException();
 #else
             return (byte*)source + (elementOffset * (nint)SizeOf<T>());
 #endif
-        }
+        }*/
 
         /// <summary>
         /// Adds an element offset to the given reference.
@@ -152,21 +152,21 @@ namespace Internal.Runtime.CompilerServices
             return ref AddByteOffset(ref source, (IntPtr)(void*)byteOffset);
         }
 
-        /// <summary>
-        /// Determines whether the specified references point to the same location.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AreSame<T>(ref T left, ref T right)
-        {
+		/// <summary>
+		/// Determines whether the specified references point to the same location.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern bool AreSame<T>(ref T left, ref T right);
+        /*{
             throw new PlatformNotSupportedException();
 
             // ldarg.0
             // ldarg.1
             // ceq
             // ret
-        }
+        }*/
 
         /// <summary>
         /// Initializes a block of memory at the given location with a given initial value 
@@ -181,78 +181,78 @@ namespace Internal.Runtime.CompilerServices
                 AddByteOffset(ref startAddress, i) = value;
         }
 
-        /// <summary>
-        /// Reads a value of type <typeparamref name="T"/> from the given location.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T ReadUnaligned<T>(void* source)
-        {
+		/// <summary>
+		/// Reads a value of type <typeparamref name="T"/> from the given location.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern T ReadUnaligned<T>(void* source);
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
             throw new PlatformNotSupportedException();
 #else
             return Unsafe.As<byte, T>(ref *(byte*)source);
 #endif
-        }
+        }*/
 
-        /// <summary>
-        /// Reads a value of type <typeparamref name="T"/> from the given location.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T ReadUnaligned<T>(ref byte source)
-        {
+		/// <summary>
+		/// Reads a value of type <typeparamref name="T"/> from the given location.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern T ReadUnaligned<T>(ref byte source);
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
             throw new PlatformNotSupportedException();
 #else
             return Unsafe.As<byte, T>(ref source);
 #endif
-        }
+        }*/
 
-        /// <summary>
-        /// Writes a value of type <typeparamref name="T"/> to the given location.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnaligned<T>(void* destination, T value)
-        {
+		/// <summary>
+		/// Writes a value of type <typeparamref name="T"/> to the given location.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern void WriteUnaligned<T>(void* destination, T value);
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
             throw new PlatformNotSupportedException();
 #else
             Unsafe.As<byte, T>(ref *(byte*)destination) = value;
 #endif
-        }
+        }*/
 
-        /// <summary>
-        /// Writes a value of type <typeparamref name="T"/> to the given location.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnaligned<T>(ref byte destination, T value)
-        {
+		/// <summary>
+		/// Writes a value of type <typeparamref name="T"/> to the given location.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern void WriteUnaligned<T>(ref byte destination, T value);
+        /*{
 #if CORECLR
             typeof(T).ToString(); // Type token used by the actual method body
             throw new PlatformNotSupportedException();
 #else
             Unsafe.As<byte, T>(ref destination) = value;
 #endif
-        }
+        }*/
 
-        /// <summary>
-        /// Adds an element offset to the given reference.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref T AddByteOffset<T>(ref T source, IntPtr byteOffset)
-        {
+		/// <summary>
+		/// Adds an element offset to the given reference.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern ref T AddByteOffset<T>(ref T source, IntPtr byteOffset);
+        /*{
             // This method is implemented by the toolchain
             throw new PlatformNotSupportedException();
 
@@ -260,7 +260,7 @@ namespace Internal.Runtime.CompilerServices
             // ldarg.1
             // add
             // ret
-        }
+        }*/
 
         /// <summary>
         /// Reads a value of type <typeparamref name="T"/> from the given location.
@@ -317,15 +317,15 @@ namespace Internal.Runtime.CompilerServices
             return ref Unsafe.As<byte, T>(ref *(byte*)source);
         }
 
-        /// <summary>
-        /// Determines the byte offset from origin to target from the given references.
-        /// </summary>
-        [Intrinsic]
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr ByteOffset<T>(ref T origin, ref T target)
-        {
+		/// <summary>
+		/// Determines the byte offset from origin to target from the given references.
+		/// </summary>
+		[Intrinsic]
+		[NonVersionable]
+		[MethodImpl(MethodImplOptions.InternalCall)]
+		public static extern IntPtr ByteOffset<T>(ref T origin, ref T target);
+        /*{
             throw new PlatformNotSupportedException();
-        }
+        }*/
     }
 }
