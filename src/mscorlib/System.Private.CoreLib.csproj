@@ -113,6 +113,9 @@
     <TargetArch Condition="'$(Platform)'=='x86'">i386</TargetArch>
     <TargetArch Condition="'$(Platform)'!='x86'">$(Platform)</TargetArch>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|amd64'">
+    <DefineConstants>TRACE;BIT64;AMD64;;CORECLR;_USE_NLS_PLUS_TABLE;RESOURCE_SATELLITE_CONFIG;CODE_ANALYSIS_BASELINE;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_USE_LCID;FEATURE_WIN32_REGISTRY;FEATURE_DEFAULT_INTERFACES;PROFILING_SUPPORTED;PLATFORM_WINDOWS;SIGNED;FEATURE_PAL</DefineConstants>
+  </PropertyGroup>
   <!-- CLR Features -->
   <Import Project="$(MSBuildThisFileDirectory)..\..\clr.coreclr.props" />
   <Import Project="$(MSBuildThisFileDirectory)..\..\clr.defines.targets" />

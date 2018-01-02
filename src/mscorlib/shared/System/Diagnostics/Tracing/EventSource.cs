@@ -1573,10 +1573,14 @@ namespace System.Diagnostics.Tracing
 #if (!ES_BUILD_STANDALONE && !ES_BUILD_PN)
                 // API available on OS >= Win 8 and patched Win 7.
                 // Disable only for FrameworkEventSource to avoid recursion inside exception handling.
-                if (this.Name != "System.Diagnostics.Eventing.FrameworkEventSource" || Environment.IsWindows8OrAbove)
+                if (this.Name != "System.Diagnostics.Eventing.FrameworkEventSource"
+#if !FEATURE_PAL
+                   || Environment.IsWindows8OrAbove
 #endif
-                {
-                    int setInformationResult;
+					)
+#endif
+				{
+					int setInformationResult;
                     System.Runtime.InteropServices.GCHandle metadataHandle =
                         System.Runtime.InteropServices.GCHandle.Alloc(this.providerMetadata, System.Runtime.InteropServices.GCHandleType.Pinned);
                     IntPtr providerMetadata = metadataHandle.AddrOfPinnedObject();

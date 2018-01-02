@@ -488,11 +488,12 @@ namespace System
             }
         }
 
-        private static string GetEnvironmentVariableCore(string variable)
-        {
+		[MethodImpl(MethodImplOptions.InternalCall)]
+	    private static extern string GetEnvironmentVariableCore(string variable);
+        /*{
             Span<char> buffer = stackalloc char[128]; // A somewhat reasonable default size
             return GetEnvironmentVariableCoreHelper(variable, buffer);
-        }
+        }*/
 
         private static string GetEnvironmentVariableCoreHelper(string variable, Span<char> buffer)
         {

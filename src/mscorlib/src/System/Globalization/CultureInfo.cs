@@ -164,8 +164,11 @@ namespace System.Globalization
                 s_InvariantCultureInfo = temp;
             }
 
-            s_userDefaultCulture = GetUserDefaultCulture();
-            s_userDefaultUICulture = GetUserDefaultUILanguage();
+			s_userDefaultCulture = CultureInfo.InvariantCulture;
+	        s_userDefaultUICulture = CultureInfo.InvariantCulture;
+
+			/*s_userDefaultCulture = GetUserDefaultCulture();
+            s_userDefaultUICulture = GetUserDefaultUILanguage();*/
             return true;
         }
 
