@@ -87,8 +87,8 @@ namespace System
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         internal static extern int GetHashCodeOfPtr(IntPtr ptr);
-		
-		public override String ToString()
+
+        public override String ToString()
         {
             return this.GetType().ToString();
         }
