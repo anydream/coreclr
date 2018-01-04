@@ -63,7 +63,9 @@ namespace System.Runtime.InteropServices
 
         public override string ToString()
         {
-            string message = Message;
+	        return "ExternalException";
+
+			string message = Message;
             string className = GetType().ToString();
 
             string s = className + " (0x" + HResult.ToString("X8", CultureInfo.InvariantCulture) + ")";
