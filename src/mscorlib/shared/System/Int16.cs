@@ -68,7 +68,8 @@ namespace System
 
 
         public override String ToString()
-        {
+		{
+			return "Int16";
             return Number.FormatInt32(m_value, null, null);
         }
 

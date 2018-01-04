@@ -234,7 +234,8 @@ namespace System
         }
 
         public override String ToString()
-        {
+		{
+			return "Double";
             return Number.FormatDouble(m_value, null, NumberFormatInfo.CurrentInfo);
         }
 

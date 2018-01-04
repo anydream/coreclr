@@ -74,7 +74,8 @@ namespace System
         }
 
         public override String ToString()
-        {
+		{
+			return "Int64";
             return Number.FormatInt64(m_value, null, null);
         }
 

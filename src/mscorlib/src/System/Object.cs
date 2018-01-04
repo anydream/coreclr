@@ -48,6 +48,7 @@ namespace System
         // 
         public virtual String ToString()
         {
+			return "Object";
             return GetType().ToString();
         }
 

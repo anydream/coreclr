@@ -72,7 +72,8 @@ namespace System
 
         // Provides a string representation of a byte.
         public override String ToString()
-        {
+		{
+			return "SByte";
             return Number.FormatInt32(m_value, null, null);
         }
 

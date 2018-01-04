@@ -226,7 +226,8 @@ namespace System
         }
 
         public override String ToString()
-        {
+		{
+			return "Single";
             return Number.FormatSingle(m_value, null, NumberFormatInfo.CurrentInfo);
         }
 

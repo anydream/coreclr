@@ -77,7 +77,8 @@ namespace System
 
         // The base 10 representation of the number with no extra padding.
         public override String ToString()
-        {
+		{
+			return "UInt32";
             return Number.FormatUInt32(m_value, null, null);
         }
 

@@ -9,7 +9,7 @@ namespace System.Globalization
         private static bool GetGlobalizationInvariantMode()
         {
             bool invariantEnabled = GetInvariantSwitchValue();
-            if (!invariantEnabled)
+            /*if (!invariantEnabled)
             {
                 if (Interop.GlobalizationInterop.LoadICU() == 0)
                 {
@@ -17,7 +17,7 @@ namespace System.Globalization
                                     "Set the configuration flag System.Globalization.Invariant to true if you want to run with no globalization support.";
                     Environment.FailFast(message);
                 }
-            }
+            }*/
             return invariantEnabled;
         }
     }

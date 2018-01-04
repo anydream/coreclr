@@ -214,7 +214,8 @@ namespace System
         }
 
         public unsafe override string ToString()
-        {
+		{
+			return "UIntPtr";
             return ((nuint)_value).ToString(CultureInfo.InvariantCulture);
         }
     }
