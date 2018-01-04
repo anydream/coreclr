@@ -52,8 +52,7 @@
     <BuildType Condition="'$(__BuildType)' == 'release'">Release</BuildType>
     <BuildType Condition="'$(__BuildType)' == 'checked'">Checked</BuildType>
 
-    <BuildOS>$(__BuildOS)</BuildOS>
-    <BuildOS Condition="'$(__BuildOS)' == ''">Windows_NT</BuildOS>
+    <BuildOS>Linux</BuildOS>
 
     <ProjectDir>$(__ProjectDir)\</ProjectDir>
     <ProjectDir Condition="'$(__ProjectDir)'==''">$(MSBuildThisFileDirectory)</ProjectDir>
