@@ -749,6 +749,8 @@ namespace System
         // See comment on ExceptionMessageKind
         internal static String GetMessageFromNativeResources(ExceptionMessageKind kind)
         {
+	        return "GetMessageFromNativeResources";
+
             string retMesg = null;
             GetMessageFromNativeResources(kind, JitHelpers.GetStringHandleOnStack(ref retMesg));
             return retMesg;

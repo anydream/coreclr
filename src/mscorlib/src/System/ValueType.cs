@@ -90,6 +90,8 @@ namespace System
 
         public override String ToString()
         {
+	        return "ValueType";
+
             return this.GetType().ToString();
         }
     }

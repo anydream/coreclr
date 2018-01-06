@@ -13,6 +13,8 @@ namespace System.Globalization
         // value from the environment variable if it is defined.
         internal static bool GetInvariantSwitchValue()
         {
+			return true;
+
             bool exist;
             bool ret = CLRConfig.GetBoolValue("System.Globalization.Invariant", out exist);
             if (!exist)

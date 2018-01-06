@@ -420,7 +420,7 @@ namespace System.Text
                 {
                     fallbackBuffer = encoder.FallbackBuffer;
                     if (fallbackBuffer.Remaining > 0)
-                        throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType()));
+                        throw new ArgumentException(/*SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType())*/);
 
                     // Set our internal fallback interesting things.
                     fallbackBuffer.InternalInitialize(chars, pEnd, encoder, false);
@@ -837,7 +837,7 @@ namespace System.Text
                     // We always need the fallback buffer in get bytes so we can flush any remaining ones if necessary
                     fallbackBuffer = encoder.FallbackBuffer;
                     if (fallbackBuffer.Remaining > 0 && encoder._throwOnOverflow)
-                        throw new ArgumentException(SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType()));
+                        throw new ArgumentException(/*SR.Format(SR.Argument_EncoderFallbackNotEmpty, this.EncodingName, encoder.Fallback.GetType())*/);
 
                     // Set our internal fallback interesting things.
                     fallbackBuffer.InternalInitialize(chars, pEnd, encoder, true);
@@ -2477,7 +2477,7 @@ namespace System.Text
         }
 
         public override ReadOnlySpan<byte> Preamble =>
-            GetType() != typeof(UTF8Encoding) ? GetPreamble() : // in case a derived UTF8Encoding overrode GetPreamble
+            GetInternalTypeID() != Runtime.CompilerServices.RuntimeHelpers.GetInternalTypeID<UTF8Encoding>() ? GetPreamble() : // in case a derived UTF8Encoding overrode GetPreamble
             _emitUTF8Identifier ? s_preamble :
             Array.Empty<byte>();
 

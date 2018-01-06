@@ -929,12 +929,12 @@ namespace System.Globalization
 
         internal int IndexOfOrdinal(string source, string value, int startIndex, int count, bool ignoreCase)
         {
-            if (_invariantMode)
+            //if (_invariantMode)
             {
                 return InvariantIndexOf(source, value, startIndex, count, ignoreCase);
             }
 
-            return IndexOfOrdinalCore(source, value, startIndex, count, ignoreCase);
+            //return IndexOfOrdinalCore(source, value, startIndex, count, ignoreCase);
         }
 
         ////////////////////////////////////////////////////////////////////////
@@ -1123,12 +1123,12 @@ namespace System.Globalization
 
         internal int LastIndexOfOrdinal(string source, string value, int startIndex, int count, bool ignoreCase)
         {
-            if (_invariantMode)
+            //if (_invariantMode)
             {
                 return InvariantLastIndexOf(source, value, startIndex, count, ignoreCase);
             }
 
-            return LastIndexOfOrdinalCore(source, value, startIndex, count, ignoreCase);
+            //return LastIndexOfOrdinalCore(source, value, startIndex, count, ignoreCase);
         }
 
         ////////////////////////////////////////////////////////////////////////

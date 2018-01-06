@@ -25,6 +25,8 @@ namespace System.Globalization
         /// </summary>
         private unsafe bool InitCultureData()
         {
+			return true;
+
             Debug.Assert(_sRealName != null);
 
             Debug.Assert(!GlobalizationMode.Invariant);

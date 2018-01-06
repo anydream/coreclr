@@ -199,7 +199,7 @@ namespace System.Globalization
                 return index;
             }
 
-            if (_isAsciiEqualityOrdinal && CanUseAsciiOrdinalForOptions(options) && source.IsFastSort() && target.IsFastSort())
+            //if (_isAsciiEqualityOrdinal && CanUseAsciiOrdinalForOptions(options) && source.IsFastSort() && target.IsFastSort())
             {
                 index = IndexOf(source, target, startIndex, count, GetOrdinalCompareOptions(options));
                 if(index != -1)
@@ -210,12 +210,12 @@ namespace System.Globalization
                 return index;
             }
             
-            fixed (char* pSource = source)
+            /*fixed (char* pSource = source)
             {
                 index = Interop.GlobalizationInterop.IndexOf(_sortHandle, target, target.Length, pSource + startIndex, count, options, matchLengthPtr);
 
                 return index != -1 ? index + startIndex : -1;
-            }
+            }*/
         }
 
         private unsafe int LastIndexOfCore(string source, string target, int startIndex, int count, CompareOptions options)

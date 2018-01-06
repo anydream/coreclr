@@ -1274,7 +1274,7 @@ namespace System.Text
             // Special message to include fallback type in case fallback's GetMaxCharCount is broken
             // This happens if user has implemented an encoder fallback with a broken GetMaxCharCount
             throw new ArgumentException(
-                SR.Format(SR.Argument_EncodingConversionOverflowBytes, EncodingName, EncoderFallback.GetType()), "bytes");
+                /*SR.Format(SR.Argument_EncodingConversionOverflowBytes, EncodingName, EncoderFallback.GetType()), "bytes"*/);
         }
 
         internal void ThrowBytesOverflow(EncoderNLS encoder, bool nothingEncoded)
